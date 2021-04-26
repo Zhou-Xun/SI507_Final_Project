@@ -1,2 +1,5 @@
-/data/analysis/twitter_secret.py
-/data/analysis/reddit_secret.py
+data/analysis/__pycache__/reddit_secret.cpython-39.pyc
+data/analysis/__pycache__/twitter_secret.cpython-39.pyc
+data/analysis/reddit_secret.py
+data/analysis/twitter_secret.py
+
