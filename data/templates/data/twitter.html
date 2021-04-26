@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Twitter</title>
+</head>
+<body>
+ <h3>Twitter filter</h3>
+<form action="{% url 'data:twitter' %}", method="post">
+    {% csrf_token %}
+    <div>
+    <p>
+        <p> ( e.g. value: news lang:en - is: retweet, tag: #world news )<br>
+        <a href="https://developer.twitter.com/en/docs/twitter-api/tweets/filtered-stream/integrate/build-a-rule">How to build a rule for twitter</a></p>
+        Enter a value <input name="value" type="text"/><br/>
+        Enter a tag <input name="tag" type="text"/><br/>
+        Enter the number of twitters you want to return <input style="width:30px;" name="limit" type="text"
+                                                                  maxlength="4" oninput = "value=value.replace(/[^\d]/g,'')"/><br/>
+        <input type="submit" name="dopost" value="submit" />
+    </p>
+    </div>
+</form>
+    <p>{% if twitter_list %}
+        <ol>
+        {% for twitter in twitter_list %}
+            <li><p style="line-height:5px;">{{ twitter }}</p></li>
+        {% endfor %}
+        </ol>
+        </div>
+    {% endif %}
+    </p>
+<a href="{% url 'data:all' %}">Go back to reddit submission.</a>
+</body>
+</html>

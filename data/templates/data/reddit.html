@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reddit</title>
+</head>
+<style>
+    a:link, a:visited, a:hover, a:active {
+    color:#000000;
+    text-decoration:none;
+    }
+</style>
+<body>
+    <h3>Reddit sentimental score</h3>
+    <div class="data_distribution">
+        <div class="show_img">
+            <img src="{{ src }}" alt="exploratory data analysis"/>
+        </div>
+{#        <p>{{ score }}</p>#}
+    </div>
+<form action="{% url 'data:reddit' %}", method="post">
+    {% csrf_token %}
+    <div>
+    <p>
+        Enter a subreddit name, e.g. "news" <input name="subreddit" type="text"/><br/>
+        Enter a period of time, start from 2021/4/22 <input type="date" name="datepicker" class='form-control' id="startd"  value="2021-4-22" required/> &nbsp;&nbsp;
+        end <input type="date" name="datepicker2" class='form-control' id="endd"required  value="2021-4-23" /> <br>
+        Order by?
+        <select name="order">
+            <option value="NUMCOMMENTS">num of comments</option>
+            <option value="SCORE">score</option>
+            <option value="none">none</option>
+        </select>
+        Enter the number of submissions you want to return <input style="width:30px;" name="limit" type="text"
+                                                                  maxlength="4" oninput = "value=value.replace(/[^\d]/g,'')"/><br/>
+        <input type="submit" name="dopost" value="submit" />
+    </p>
+    </div>
+</form>
+
+    <p>{% if reddit_list %}
+        <ol>
+        {% for subid, title in reddit_list %}
+            <li><p style="line-height:5px;"><a href="{% url "data:comments" subid%}">{{ title }}</a></p></li>
+        {% endfor %}
+        </ol>
+        </div>
+    {% endif %}
+    </p>
+<a href="{% url 'data:all' %}">Go back to reddit submission.</a>
+</body>
+</html>

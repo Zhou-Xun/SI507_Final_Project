@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        <li><a href="{% url "data:reddit" %}">reddit</a></li>
+        <li><a href="{% url "data:twitter" %}">twitter</a></li>
+    </ul>
+    <div class="data_distribution">
+        <div class="show_img" style="width:500px; height:250px;">
+            <img src="{{ src_reddit }}" width="100%" height="100%" alt="word cloud"/>
+        </div><br>
+        <div class="show_img" style="width:500px; height:250px;">
+            <img src="{{ src_twitter }}" width="100%" height="100%" alt="word cloud"/>
+        </div>
+    </div>
+</body>
+</html>

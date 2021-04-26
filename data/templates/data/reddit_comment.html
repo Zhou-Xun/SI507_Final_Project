@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="{% url 'data:comments' subid %}", method="post">
+    {% csrf_token %}
+    <div>
+    <p>
+    Enter the number of comments you want to return <input style="width:30px;" name="limit" type="text"
+                                                           maxlength="4" oninput = "value=value.replace(/[^\d]/g,'')"/><br/>
+    <input type="submit" name="dopost" value="submit" />
+    </p>
+    </div>
+</form>
+    {% if comments_list %}
+    <ol>
+        {% for comment in comments_list %}
+        <li>{{ comment }}</li>
+        {% endfor %}
+    </ol>
+    {% endif %}
+<a href="{% url 'data:reddit' %}">Go back to reddit submission.</a>
+</body>
+</html>
