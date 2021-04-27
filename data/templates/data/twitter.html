@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Twitter</title>
 </head>
+
 <body>
  <h3>Twitter filter</h3>
 <form action="{% url 'data:twitter' %}", method="post">
@@ -23,12 +24,12 @@
     <p>{% if twitter_list %}
         <ol>
         {% for twitter in twitter_list %}
-            <li><p style="line-height:5px;">{{ twitter }}</p></li>
+            <li><p style="line-height:20px;">{{ twitter }}</p></li>
         {% endfor %}
         </ol>
         </div>
     {% endif %}
     </p>
-<a href="{% url 'data:all' %}">Go back to reddit submission.</a>
+<a href="{% url 'data:all' %}">Go back to home page.</a>
 </body>
 </html>

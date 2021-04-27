@@ -32,13 +32,10 @@ class RedditListView(View):
         submission_df = pd.DataFrame(submission,
                                      columns=['SUBID', 'URL', 'TITLE', 'SUBREDDIT', 'SCORE', 'SELFTEXT', 'NUMCOUNTS',
                                               'CREATE_TIME'])
-        score = process_reddit.get_score(submission_df)[0][0]
         src = process_reddit.auto()
         cntx = {
-            'score': score,
             'src': src,
         }
-        print(score)
         print(src)
         return render(request, 'data/reddit.html', cntx)
 
